@@ -2,6 +2,9 @@
 
 Chrome extension (Manifest V3, formerly "Multi-Select Copy") for selecting multiple, non-contiguous chunks of text on a page and copying them all at once — in document order, joined with blank lines.
 
+<img width="1280" height="800" alt="okto 1" src="https://github.com/user-attachments/assets/4d55000a-c359-43c0-94e8-cc2bdd49e50d" />
+
+
 ## Usage
 
 1. Hold **⌘ (Mac) / Ctrl (Windows)** and select text with the mouse. Each selection is kept and highlighted — each in its own color from a rainbow palette; a status pill shows the count.
