@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multi-Select Copy — test page</title>
+<style>
+  body { font: 16px/1.6 -apple-system, system-ui, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 20px; color: #222; }
+  h1 { font-size: 24px; }
+  .card { border: 1px solid #ddd; border-radius: 8px; padding: 12px 16px; margin: 16px 0; }
+  [contenteditable] { background: #f6f8fa; }
+  input, textarea { font: inherit; width: 100%; box-sizing: border-box; margin-top: 8px; }
+  a { color: #0969da; }
+</style>
+</head>
+<body>
+  <h1 id="title">Alpha heading for selection tests</h1>
+
+  <p id="p1">First paragraph. The quick brown fox jumps over the lazy dog while
+  the band plays on. Bravo chunk lives here in the middle of the text.</p>
+
+  <p id="p2">Second paragraph. Charlie segment sits in this block, surrounded by
+  filler words that should never end up in the clipboard by accident.</p>
+
+  <p id="p3">Third paragraph with a <a href="https://example.com">hyperlink inside</a>
+  and a final Delta fragment near the end of the line.</p>
+
+  <div class="card">
+    <strong>Multi-line block:</strong>
+    <p id="multi">Line one of the block.<br>Line two of the block.</p>
+  </div>
+
+  <div class="card">
+    <strong>Contenteditable (Notion/Gmail stand-in):</strong>
+    <div id="editable" contenteditable="true">Editable text: typing and copying in
+    here must keep working exactly as native.</div>
+  </div>
+
+  <div class="card">
+    <strong>Form fields:</strong>
+    <input id="input1" value="Input value that native copy must still handle">
+    <textarea id="ta1" rows="2">Textarea content, same deal.</textarea>
+  </div>
+
+  <script>
+    // Test-only: with #debug in the URL, record shadow roots so automated
+    // tests can assert HUD state despite the closed shadow root.
+    if (location.hash === '#debug') {
+      window.__shadowRoots = [];
+      const orig = Element.prototype.attachShadow;
+      Element.prototype.attachShadow = function (init) {
+        const root = orig.call(this, init);
+        window.__shadowRoots.push(root);
+        return root;
+      };
+    }
+  </script>
+  <script src="../content.js"></script>
+</body>
+</html>
